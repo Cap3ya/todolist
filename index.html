@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capeya's to-do list</title>
+  <meta name="description" content="You can login or signup. Create-Read-Update-Delete, Filter and Sort tasks. To get a quick trial => username: test password: test">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.js"></script>
+</head>
+
+<body>
+  <div id="loginSignup">
+    <div class="flex-column">
+      <header>
+        <h1>Welcome</h1>
+        <p>to your favorite to-do list</p>
+        <small>by <a href="https://capeya.me">Capeya</a></small>
+      </header>
+
+      <form id="login" class="login">
+        <h2>Log in</h2>
+        <label for="login_username">Username:</label>
+        <input id="login_username" type="text" value="test">
+        <label for="login_password">Password:</label>
+        <input id="login_password" type="password" value="test">
+        <button type="button" id="login_button">Submit</button>
+      </form>
+
+      <form class="signup">
+        <h2>Sign up</h2>
+        <label for="signup_username">Username:</label>
+        <input id="signup_username" type="text">
+        <label for="signup_password">Password:</label>
+        <input id="signup_password" type="password" minlength="4">
+        <label for="signup_passconf">Confirm:</label>
+        <input id="signup_passconf" type="password">
+        <button type="button" id="signup_button">Submit</button>
+      </form>
+
+      <label for="checkbox"></label>
+      <input id="checkbox" type="checkbox">
+
+      <ul id="login_errors" class="login">
+        <li id="login_err1" hidden>Can not find user</li>
+      </ul>
+      <ul class="signup">
+        <li id="signup_err1" hidden>Username is too short</li>
+        <li id="signup_err2" hidden>Password is too short</li>
+        <li id="signup_err3" hidden>Confirmation is wrong</li>
+        <li id="signup_err4" hidden>User do already exist</li>
+      </ul>
+    </div>
+  </div>
+
+  <main hidden>
+    <div class="flex-column">
+      <header>
+        <h1>Hi <span id="greetings"></span></h1>
+        <p>You have <span id="tasksCount"></span> tasks</p>
+        <p>among which <span id="tasksProgress"></span> are done</p>
+      </header>
+      <div id="filter">
+        <select id="filterBy_key">
+          <option value="">filterBy</option>
+          <option value="name">name</option>
+          <option value="isDone">isDone</option>
+          <option value="labels">labels</option>
+          <option value="dueDate">dueDate</option>
+          <option value="importance">importance</option>
+          <option value="urgence">urgency</option>
+          <option value="priority">priority</option>
+        </select>
+        <input id="filterBy_value" type="text" placeholder="filterBy">
+        <select id="sortBy">
+          <option value="">sortBy</option>
+          <option value="name">name</option>
+          <option value="isDone">isDone</option>
+          <option value="labels">labels</option>
+          <option value="dueDate">dueDate</option>
+          <option value="importance">importance</option>
+          <option value="urgence">urgency</option>
+          <option value="priority">priority</option>
+        </select>
+      </div>
+      <ul id="tasks"></ul>
+      <dialog>
+        <form>
+          <input id="name" type="text" placeholder="name">
+          <input id="labels" type="text" placeholder="labels">
+          <input id="dueDate" type="date">
+          <input id="dueTime" type="time">
+          <textarea id="description" placeholder="Small description"></textarea>
+          <input id="importance" type="number" min="0" max="4" value="1">
+          <button id="createTask_button" type="button">Submit</button>
+        </form>
+        <button id="closeDialog_button" autofocus>&times</button>
+      </dialog>
+      <button id="openDialog_button">
+        <p>&#43</p>
+      </button>
+    </div>
+  </main>
+</body>
